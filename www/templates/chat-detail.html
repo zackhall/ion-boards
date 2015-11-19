@@ -15,8 +15,8 @@
   </ion-content>
   <ion-footer-bar keyboard-attach class="bar-stable item-input-inset">
     <label class="item-input-wrapper">
-      <input type="text" placeholder="What's happening?" />
+      <input type="text" placeholder="What's happening?" ng-model="message" />
     </label>
-    <a class="button button-icon ion-paper-airplane"></a>
+    <a class="button button-icon ion-paper-airplane" ng-click="sendMessage(message)"></a>
   </ion-footer-bar>
 </ion-view>
