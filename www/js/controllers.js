@@ -20,7 +20,7 @@ angular.module('starter.controllers', [])
   // chat.sendMessage('user2', 'ohhh, cool.');
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
+.controller('ChatDetailCtrl', function($scope, $stateParams, Chats, Session) {
     var chatId = $stateParams.chatId;
     var chat = Chats.getChat(chatId);
 
@@ -28,8 +28,10 @@ angular.module('starter.controllers', [])
     $scope.messages = chat.messages();
 
     $scope.sendMessage = function(body) {
-      chat.sendMessage('zthall', body);
-      clearNewMessage();
+      Session.getUser().then(function(user) {
+        chat.sendMessage(user, body);
+        clearNewMessage();
+      })
     };
 
     function clearNewMessage() {
