@@ -13,5 +13,6 @@ To run locally:
 ## tags
 This project is setup with many tags. Each tag represents an incremental step in building the project. To checkout the project at a specific point, use the following:
 - `git checkout tags/<tagname>` where tagname is in [v1, v2, v3, v4, v5]
+
 To get back to latest, run:
 - `git checkout master`
