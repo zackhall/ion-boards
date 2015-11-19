@@ -9088,3 +9088,24 @@ a.button {
   opacity: 0;
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
+
+ul.messages {
+  padding-left: 0;
+  list-style: none; }
+  ul.messages li {
+    color: white;
+    background: #3C7EFD;
+    margin: 0 0 3px 0;
+    border-radius: 5px 25px 25px 5px;
+    padding: 10px 15px;
+    width: auto;
+    display: table; }
+    ul.messages li:first-child {
+      border-radius: 25px 25px 25px 5px; }
+    ul.messages li:last-child {
+      border-radius: 5px 25px 25px 25px; }
+    ul.messages li p {
+      margin: 0 0 5px 0; }
+
+.chat-item em {
+  font-style: italic; }

@@ -1,4 +1,7 @@
 <ion-view view-title="Chats">
+  <ion-nav-buttons side="right">
+      <button class="button button-icon icon ion-compose"></button>
+  </ion-nav-buttons>
   <ion-content>
     <ion-list>
       <ion-item class="item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.metadata.board}}">

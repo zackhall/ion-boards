@@ -21,3 +21,29 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+ul.messages{
+  padding-left: 0;
+  list-style: none;
+  li{
+    color: white;
+    background: #3C7EFD;
+    margin: 0 0 3px 0;
+    border-radius: 5px 25px 25px 5px;
+    padding: 10px 15px;
+    width: auto;
+    display: table;
+    &:first-child{
+      border-radius: 25px 25px 25px 5px;
+    }
+    &:last-child{
+      border-radius: 5px 25px 25px 25px;
+    }
+    p {
+    	margin: 0 0 5px 0;
+    }
+  }
+}
+
+.chat-item em {
+	font-style: italic;
+}
