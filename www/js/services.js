@@ -1,50 +1,110 @@
 angular.module('starter.services', [])
 
 .factory('Chats', function() {
-  // Might use a resource here that returns a JSON array
 
   // Some fake testing data
-  var chats = [{
-    id: 0,
-    name: 'Ben Sparrow',
-    lastText: 'You on your way?',
-    face: 'img/ben.png'
-  }, {
-    id: 1,
-    name: 'Max Lynx',
-    lastText: 'Hey, it\'s me',
-    face: 'img/max.png'
-  }, {
-    id: 2,
-    name: 'Adam Bradleyson',
-    lastText: 'I should buy a boat',
-    face: 'img/adam.jpg'
-  }, {
-    id: 3,
-    name: 'Perry Governor',
-    lastText: 'Look at my mukluks!',
-    face: 'img/perry.png'
-  }, {
-    id: 4,
-    name: 'Mike Harrington',
-    lastText: 'This is wicked good ice cream.',
-    face: 'img/mike.png'
-  }];
-
-  return {
-    all: function() {
-      return chats;
-    },
-    remove: function(chat) {
-      chats.splice(chats.indexOf(chat), 1);
-    },
-    get: function(chatId) {
-      for (var i = 0; i < chats.length; i++) {
-        if (chats[i].id === parseInt(chatId)) {
-          return chats[i];
+  var data = 
+    {
+      "boards": {
+        "ionic-seattle": {
+          "metadata": {
+            "board": "ionic-seattle",
+            "lastUpdated": 12345678,
+            "lastMessage": {
+              "from": "class",
+              "body": "Doing well.",
+              "timestamp": 12345678
+            }
+          },
+          "messages": [{
+              "from": "zack",
+              "body": "Hi, everyone. How're you doing?",
+              "timestamp": 12345678
+            }, {
+              "from": "class",
+              "body": "Doing well.",
+              "timestamp": 12345678
+            }
+          ]
+        },
+        "banter": {
+          "metadata": {
+            "board": "banter",
+            "lastUpdated": 12345678,
+            "lastMessage": {
+              "from": "vivian",
+              "body": "Get a new joke.",
+              "timestamp": 12345678
+            }
+          },
+          "messages": [{
+              "from": "zack",
+              "body": "Why did the chicken cross the road?",
+              "timestamp": 12345678
+            }, {
+              "from": "vivian",
+              "body": "Get a new joke.",
+              "timestamp": 12345678
+            }
+          ]
         }
       }
-      return null;
     }
-  };
+
+  var dataAsArray = [{
+      "metadata": {
+        "board": "ionic-seattle",
+        "lastUpdated": 12345678,
+        "lastMessage": {
+          "from": "class",
+          "body": "Doing well.",
+          "timestamp": 12345678
+        }
+      }
+    }, {
+      "metadata": {
+        "board": "banter",
+        "lastUpdated": 12345678,
+        "lastMessage": {
+          "from": "vivian",
+          "body": "Get a new joke.",
+          "timestamp": 12345678
+        }
+      }
+    }
+  ]
+
+  return {
+    allChats: allChats,
+    getChat: function(board) {
+      return {
+        messages: messages(board),
+        sendMessage: sendMessage(board)
+      };
+    }
+  }
+
+  function allChats() {
+    return dataAsArray;
+  }
+
+  function sendMessage(board) {
+
+    return function(user, body) {
+      var timestamp = Date.now();
+      var message = {
+        body: body,
+        from: user,
+        timestamp: timestamp
+      };
+
+      data.boards[board].messages.push(message);
+    }
+  }
+
+  function messages(board) {
+    return function() {
+      return data.boards[board].messages;
+    }
+  }
 });
